@@ -5,6 +5,7 @@ const { unknownEndPoints } = require("./utils/middleware")
 const registerRouter = require('./controllers/register')
 const { MONGODB_URI } = require("./utils/config")
 const loginRouter = require("./controllers/login")
+const statsRouter = require("./controllers/stats")
 
 const app = express()
 
@@ -18,6 +19,9 @@ mongoose
 
 app.use('/api/register',registerRouter)
 app.use('/api/login',loginRouter)
+
+
+app.use('/api/stats', statsRouter)
 
 
 app.get('/', (req, res) => {

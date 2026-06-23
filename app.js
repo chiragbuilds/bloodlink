@@ -10,6 +10,7 @@ const requestsRouter = require("./controllers/request")
 const donorRouter = require("./controllers/donor")
 const hospitalRouter = require("./controllers/hospital")
 const bloodBankRouter = require("./controllers/bloodbank")
+const adminRouter = require("./controllers/admin")
 
 const app = express()
 
@@ -27,6 +28,7 @@ app.use('/api/requests', requestsRouter)
 app.use('/api/donor', donorRouter)
 app.use('/api/hospital', hospitalRouter)
 app.use('/api/bloodbank', bloodBankRouter)
+app.use('/api/admin', adminRouter)
 
 
 app.use('/api/stats', statsRouter)

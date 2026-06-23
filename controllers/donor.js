@@ -1,5 +1,6 @@
 const donorRouter = require('express').Router();
-const Donor = require('../models/donor');
+const Donor = require('../models/donors');
+const Request = require('../models/requests');
 
 
 // Get Donor Profile

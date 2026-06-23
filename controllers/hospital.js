@@ -1,7 +1,7 @@
 const hospitalRouter = require('express').Router();
 
-const Hospital = require('../models/hospital');
-const Request = require('../models/request');
+const Hospital = require('../models/hospitals');
+const Request = require('../models/requests');
 
 
 // Get Hospital Profile

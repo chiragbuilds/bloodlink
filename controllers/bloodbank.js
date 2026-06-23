@@ -1,7 +1,7 @@
 const bloodBankRouter = require('express').Router();
 
-const BloodBank = require('../models/bloodbank');
-const Request = require('../models/request');
+const BloodBank = require('../models/bloodbanks');
+const Request = require('../models/requests');
 
 
 // Get Blood Bank Profile

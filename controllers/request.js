@@ -1,8 +1,8 @@
 const requestsRouter = require('express').Router();
 
-const Request = require('../models/request');
-const Donor = require('../models/donor');
-const BloodBank = require('../models/bloodbank');
+const Request = require('../models/requests');
+const Donor = require('../models/donors');
+const BloodBank = require('../models/bloodbanks');
 
 
 

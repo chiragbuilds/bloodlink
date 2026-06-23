@@ -1,9 +1,9 @@
 const adminRouter = require('express').Router();
 
-const Donor = require('../models/donor');
-const Hospital = require('../models/hospital');
-const BloodBank = require('../models/bloodbank');
-const Request = require('../models/request');
+const Donor = require('../models/donors');
+const Hospital = require('../models/hospitals');
+const BloodBank = require('../models/bloodbanks');
+const Request = require('../models/requests');
 
 
 // Admin Login

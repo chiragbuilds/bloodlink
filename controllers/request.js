@@ -5,21 +5,6 @@ const Donor = require('../models/donor');
 const BloodBank = require('../models/bloodbank');
 
 
-// Create Request (Hospital)
-requestsRouter.post('/', async (req, res) => {
-  try {
-    const request = new Request(req.body);
-
-    const savedRequest = await request.save();
-
-    return res.status(201).json(savedRequest);
-
-  } catch (error) {
-    return res.status(400).json({
-      error: error.message
-    });
-  }
-});
 
 
 // Get All Requests
@@ -31,37 +16,6 @@ requestsRouter.get('/', async (req, res) => {
 
   } catch (error) {
     return res.status(500).json({
-      error: error.message
-    });
-  }
-});
-
-
-// Donor Dashboard Requests
-requestsRouter.get('/donor/:donorId', async (req, res) => {
-  try {
-    const donor = await Donor.findById(
-      req.params.donorId
-    );
-
-    if (!donor) {
-      return res.status(404).json({
-        error: 'Donor not found'
-      });
-    }
-
-
-    // if else to check if stock is present in bloodbank from same city
-    const requests = await Request.find({
-      bloodGroup: donor.bloodGroup,
-      city: donor.city,
-      status: 'pending'
-    });
-
-    return res.json(requests);
-
-  } catch (error) {
-    return res.status(400).json({
       error: error.message
     });
   }

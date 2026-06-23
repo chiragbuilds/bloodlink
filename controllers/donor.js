@@ -38,7 +38,7 @@ donorRouter.put('/:id', async (req, res) => {
     donor.phone = req.body.phone || donor.phone;
     donor.city = req.body.city || donor.city;
     donor.bloodGroup = req.body.bloodGroup || donor.bloodGroup;
-    
+
     const updatedDonor = await donor.save();
 
     return res.json(updatedDonor);
@@ -100,6 +100,57 @@ donorRouter.put('/:id/donate', async (req, res) => {
   }
 });
 
+
+donorRouter.get('/:id/requests', async (req, res) => {
+    try {
+    const donor = await Donor.findById(req.params.id);
+
+    if (!donor) {
+      return res.status(404).json({
+        error: 'Donor not found'
+      });
+    }
+
+    const requests = await Request.find({
+      city: donor.city,
+      bloodGroup: donor.bloodGroup,
+      status: 'pending'
+    });
+
+    const emergencyRequests = [];
+
+    for (const request of requests) {
+
+      const bloodBanks = await BloodBank.find({
+        city: request.city
+      });
+
+      let stockAvailable = false;
+
+      for (const bank of bloodBanks) {
+
+        const units =
+          bank.inventory?.[request.bloodGroup] || 0;
+
+        if (units > 0) {
+          stockAvailable = true;
+          break;
+        }
+      }
+
+      if (!stockAvailable) {
+        emergencyRequests.push(request);
+      }
+    }
+
+    return res.json(emergencyRequests);
+
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message
+    });
+  }
+})
 
 // Delete Donor
 donorRouter.delete('/:id', async (req, res) => {

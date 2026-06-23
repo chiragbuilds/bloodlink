@@ -52,10 +52,6 @@ const requestSchema = new mongoose.Schema(
       default: null,
     },
 
-    notes: {
-      type: String,
-      default: "",
-    },
   },
   {
     timestamps: true,

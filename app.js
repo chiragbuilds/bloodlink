@@ -7,6 +7,7 @@ const { MONGODB_URI } = require("./utils/config")
 const loginRouter = require("./controllers/login")
 const statsRouter = require("./controllers/stats")
 const requestsRouter = require("./controllers/request")
+const donorRouter = require("./controllers/donor")
 
 const app = express()
 
@@ -21,6 +22,7 @@ mongoose
 app.use('/api/register',registerRouter)
 app.use('/api/login',loginRouter)
 app.use('/api/requests', requestsRouter)
+app.use('/api/donor', donorRouter)
 
 
 app.use('/api/stats', statsRouter)

@@ -1,5 +1,7 @@
 const express = require("express")
 const mongoose = require('mongoose')
+const cors = require("cors")
+
 
 const { unknownEndPoints } = require("./utils/middleware")
 const registerRouter = require('./controllers/register')
@@ -15,6 +17,8 @@ const adminRouter = require("./controllers/admin")
 const app = express()
 
 app.use(express.json())
+
+app.use(cors())
 
 mongoose
     .connect(MONGODB_URI, {family: 4})

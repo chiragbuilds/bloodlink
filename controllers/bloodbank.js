@@ -134,24 +134,20 @@ bloodBankRouter.get('/:id/requests', async (req, res) => {
       status: 'pending'
     });
 
-    res.json(requests);
+    const matchingRequests = requests.filter(
+      request => {
+        const availableUnits =
+          bloodBank.inventory?.[
+            request.bloodGroup
+          ] || 0;
 
-    // const matchingRequests = requests.filter(
-    //   request => {
-    //     const availableUnits =
-    //       bloodBank.inventory?.[
-    //         request.bloodGroup
-    //       ] || 0;
+        return (
+          availableUnits >= request.unitsRequired
+        );
+      }
+    );
 
-    //     return (
-    //       availableUnits >= request.unitsRequired
-    //     );
-    //   }
-    // );
-
-    // return res.json(matchingRequests);
-
-
+    return res.json(matchingRequests);
 
   } catch (error) {
     return res.status(400).json({

@@ -1,7 +1,7 @@
 const donorRouter = require('express').Router();
 const Donor = require('../models/donors');
 const Request = require('../models/requests');
-
+const BloodBank = require('../models/bloodbanks');
 
 // Get Donor Profile
 donorRouter.get('/:id', async (req, res) => {

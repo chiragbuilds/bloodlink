@@ -11,6 +11,7 @@ const hospitalSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true
     },
 
     password: {
@@ -33,11 +34,13 @@ const hospitalSchema = new mongoose.Schema(
     city: {
       type: String,
       required: true,
+      lowercase: true
     },
 
     role: {
       type: String,
       default: "hospital",
+      lowercase: true
     },
     verified: {
       type: Boolean,

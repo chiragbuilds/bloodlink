@@ -11,6 +11,7 @@ const donorSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true
     },
 
     password: {
@@ -52,12 +53,14 @@ const donorSchema = mongoose.Schema(
 
     city: {
       type: String,
-      require: true
+      require: true,
+      lowercase: true
     },
 
     role: {
       type: String,
       default: "donor",
+      lowercase: true
     },
     
     verified: {

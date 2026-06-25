@@ -11,6 +11,7 @@ const bloodBankSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true
     },
 
     password: {
@@ -33,6 +34,7 @@ const bloodBankSchema = new mongoose.Schema(
     city: {
       type: String,
       required: true,
+      lowercase: true
     },
 
     inventory: {
@@ -49,6 +51,7 @@ const bloodBankSchema = new mongoose.Schema(
     role: {
       type: String,
       default: "bloodbank",
+      lowercase: true
     },
   },
   {

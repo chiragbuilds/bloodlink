@@ -26,6 +26,7 @@ const requestSchema = new mongoose.Schema(
     city: {
       type: String,
       required: true,
+      lowercase: true
     },
 
     unitsRequired: {

@@ -8,6 +8,11 @@ const requestSchema = new mongoose.Schema(
       required: true,
     },
 
+    hospitalName: {
+      type: String,
+      required: true,
+    },
+
     bloodGroup: {
       type: String,
       required: true,

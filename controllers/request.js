@@ -88,9 +88,18 @@ requestsRouter.put('/:id/accept', async (req, res) => {
 
     request.status = 'accepted';
 
-    request.acceptedBy =
-      req.body.bloodBankId;
+    request.acceptedBy = req.body.bloodBankId;
 
+    await BloodBank.findByIdAndUpdate(
+      req.body.bloodBankId,
+      {
+        $inc: {
+          [`inventory.${request.bloodGroup}`]: -request.unitsRequired
+        }
+      },
+      { new: true }
+    );
+      
     const updatedRequest =
       await request.save();
 

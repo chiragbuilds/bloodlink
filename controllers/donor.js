@@ -133,7 +133,7 @@ donorRouter.get('/:id/requests', async (req, res) => {
         const units =
           bank.inventory?.[request.bloodGroup] || 0;
 
-        if (units > 0) {
+        if (units >= request.unitsRequired) {
           stockAvailable = true;
           break;
         }

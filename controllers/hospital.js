@@ -88,7 +88,7 @@ hospitalRouter.post('/:id/requests', async (req, res) => {
     }
 
     const request = new Request({
-      hospitalPhone: hospital.hospitalPhone,
+      hospitalPhone: hospital.phone,
       hospitalName: hospital.name,
       hospitalId: hospital._id,
       bloodGroup: req.body.bloodGroup,

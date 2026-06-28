@@ -13,6 +13,12 @@ const requestSchema = new mongoose.Schema(
       required: true,
     },
 
+    hospitalPhone: {
+      type: String,
+      required: true,
+      match: /^[0-9]{10}$/
+    },
+
     bloodGroup: {
       type: String,
       required: true,
